@@ -1,0 +1,61 @@
+/* .bar {
+  fill: steelblue;
+} */
+/* .vis-barchart {
+  overflow: hidden;
+} */
+
+.tooltip {
+  background-color: white;
+}
+
+
+#tooltip-background {
+  fill: black;
+  opacity: 0.8;
+}
+
+.axis-title {
+  font-size: 16px;
+  font-weight: bold;
+  fill: #333;
+  transform: rotate(-90deg);
+
+}
+* {
+  font-family: "Helvetica Neue";
+}
+p {
+  font-size: 0.85em;
+}
+
+.state {
+  stroke: #333;
+  stroke-width: 1;
+  z-index: 5;
+}
+.county {
+  fill: #e3e3e3;
+  stroke: #fff;
+  stroke-width: 0.5;
+}
+.selected {
+  fill: #EA6A47;
+  stroke: yellow;
+  stroke-width: 3.5px;
+}
+
+.state-label {
+  fill: "white";
+  font-size: 1.0em;
+  fill-opacity: 0.55;
+  z-index: 2;
+}
+
+.h2 {
+  font-size: 10px;
+}
+
+.legend{
+  left: 1000px;
+}

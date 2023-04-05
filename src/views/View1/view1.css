@@ -1,0 +1,21 @@
+#view1 {
+  height: 200px;
+  background-color:#fff; /* #ced2cc was original background color*/
+} 
+
+.avatar-view {
+  float: left;
+  margin-left: 10px;
+  margin-top: 16px;
+}
+
+.info-view {
+  font-family: "Audiowide";
+  position: absolute;
+  margin-left: 27px;
+  margin-top: 45px;
+  font-size: 30px;
+  color: #EA6A47;
+  font-weight: bold;
+  text-align: center;
+}

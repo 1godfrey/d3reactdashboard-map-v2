@@ -1,0 +1,12 @@
+#view5 {
+  height: 600px;
+  background-color:#fff; /* #ced2cc was original background color*/
+}
+.avatar-view4 {
+  float: left;
+  margin-left: 610px;
+  margin-top: -500px;
+}
+#h1{
+fill: blue;
+}

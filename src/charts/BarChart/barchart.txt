@@ -1,0 +1,111 @@
+import * as d3 from "d3";
+import "./style.css";
+
+const draw = (props) => {
+  d3.select(".vis-barchart > *").remove();
+  const data = props.data;
+  // console.log(this.props);
+  const margin = { top: 20, right: 20, bottom: 60, left: 75 };
+  const width = 650 - margin.left - margin.right; // 750 was props.width before
+  const height = props.height - margin.top - margin.bottom;
+
+  let svg = d3
+    .select(".vis-barchart")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Scale the range of the data in the domains
+  let x = d3.scaleBand().range([0, width]).padding(0.1);
+  let y = d3.scaleLinear().range([height, 0]);
+  x.domain(
+    data.map(function (data) {
+      return data.State;
+    })
+  );
+  y.domain([
+    0,
+    d3.max(data, function (data) {
+      return data.StateDecadeTotal;
+    })
+  ]);
+
+  console.log(data.State);
+
+  // append the rectangles for the bar chart
+  svg
+    .selectAll(".bar")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("x", function (data) {
+      return x(data.State);
+    })
+    .attr("width", x.bandwidth())
+    .attr("y", function (data) {
+      return y(data.StateDecadeTotal);
+    })
+    .attr("height", function (data) {
+      return height - y(data.StateDecadeTotal);
+    })
+    .attr("fill", "steelblue")
+    .on("mouseover", function (event) {
+      const barData = d3.select(this).data()[0];
+      // Add tooltip
+      d3.select(this).attr("fill", "orange");
+      svg
+        .append("rect")
+        .attr("id", "tooltip-background")
+        .attr("class", "tooltip")
+        .attr("x", x(barData.State) + x.bandwidth() / 2 - 80)
+        .attr("y", y(barData.StateDecadeTotal) - 30)
+        .attr("rx", 5)
+        .attr("ry", 5)
+        .attr("width", 160)
+        .attr("height", 60);
+      svg
+        .append("text")
+        .attr("id", "tooltip")
+        .attr("class", "tooltip")
+        .attr("x", x(barData.State) + x.bandwidth() / 2)
+        .attr("y", y(barData.StateDecadeTotal))
+        .attr("text-anchor", "middle")
+        .attr("alignment-baseline", "central")
+        .text(barData.State + ": " + barData.StateDecadeTotal);
+    })
+    .on("mouseout", function () {
+      d3.select(this).attr("fill", "steelblue");
+      // Remove tooltip
+      svg.selectAll(".tooltip").remove();
+    });
+
+  // add the x Axis
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .append("text")
+    .attr("class", "axis-title")
+    .attr("x", width / 2)
+    .attr("y", 40)
+    .style("text-anchor", "middle") // center the text horizontally
+    .text("State");
+
+  // add the y Axis
+  svg
+    .append("g")
+    .call(d3.axisLeft(y))
+    .append("text")
+    .attr("class", "axis-title")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -height / 2)
+    .attr("y", -60)
+    .attr("dy", "1em") // center the text vertically
+    .style("text-anchor", "middle") // center the text horizontally
+    .text("Reported Falls");
+};
+
+export default draw;

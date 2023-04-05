@@ -1,0 +1,15 @@
+svg .axis-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* .tooltip {
+  font-size: 14px;
+  font-weight: bold;
+  fill: white;
+} */
+
+.tooltip-background {
+  fill: #7E909A;
+  opacity: 0.8;
+}

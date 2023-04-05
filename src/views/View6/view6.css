@@ -1,0 +1,15 @@
+#view6 {
+  height: 600px;
+  background-color:#fff; /* #ced2cc was original background color*/
+}
+
+.list-container {
+  height: 85%;
+  overflow-y: scroll;
+  font-family: "Audiowide";
+}
+
+.selected {
+  background-color: blue;
+  color: white;
+}

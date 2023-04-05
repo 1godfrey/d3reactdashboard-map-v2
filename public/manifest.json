@@ -1,0 +1,9 @@
+{
+  "name": "Dashboard with React and D3",
+  "short_name": "Dashboard",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+
+}

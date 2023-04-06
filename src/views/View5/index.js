@@ -8,6 +8,8 @@ import { USMap } from "../../charts/BarChart/vis.js";
 
 
 export default class View5 extends Component {
+
+  
   constructor(props) {
     super(props);
     this.state = { selectedState: "California" };
@@ -20,27 +22,34 @@ export default class View5 extends Component {
     }
   };
 
-  handleClick = (data) => {
-    this.select(data);
-    this.setState({ selectedState: data });
+  handleClick = (state) => {
+    this.select(state);
+    this.setState({ selectedState: state });
   };
 
-  
+  onStateChange = (state) => {
+    this.setState({
+      selectedState: state
+    });
+  };
 
   render() {
-    const { selectedState, setSelectedState } = this.props;
+    const { selectedState } = this.state;
     return (
       <div id="view5" className="pane">
         <div className="header">
           Reported Deaths vs State (hover for details)
         </div>
-
-
         <div className="bar-chart">
-          <BarChart
-            data={this.props.data}
-            selectedState={this.state.selectedState}
-          />
+          {/* <USMap
+            // data={selectedState}
+            onClick={(state) => {
+              this.handleClick(state);
+            }}
+            selectedState={selectedState}
+            onStateChange={this.onStateChange}
+
+          /> */}
         </div>
       </div>
     );

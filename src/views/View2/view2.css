@@ -1,9 +1,12 @@
 #view2 {
   height: 300px;
-  background-color:#fff; /* #ced2cc was original background color*/
+  background-color:#fffffff7; /* #ced2cc was original background color*/
 }
 .avatar-view2 {
   float: left;
   margin-left: 235px;
   margin-top: -250px;
+}
+.tooltip{
+  fill:black
 }

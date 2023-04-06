@@ -7,6 +7,7 @@ import View3 from "./views/View3";
 import View4 from "./views/View4";
 import View5 from "./views/View5";
 import View6 from "./views/View6";
+import { USMap } from "../src/charts/BarChart/vis.js";
 import "./dashboard.css";
 
 const { Sider, Content, Footer } = Layout;
@@ -16,28 +17,24 @@ export default class Dashboard extends Component {
     super(props);
 
     this.state = {
-      mapState: data[0],
-      selectedState: data[0],
+      selectedState: "Alaska",
       greaterThenAge: 0,
       includedRegion: ["Male", "Female", "Unknown"],
       highlightedState: null // new state property
     };
   }
 
-
-  changeSelectState = (value) => {
+  onStateChange = (state) => {
     this.setState({
-      selectedState: value
+      selectedState: state
     });
   };
 
-  changeMapState = (value) => {
+  changeMapState = (state) => {
     this.setState({
-      mapState: value
+      mapState: state
     });
   };
-
-
 
   highlightState = (user) => {
     this.setState({ highlightedState: user });
@@ -58,19 +55,20 @@ export default class Dashboard extends Component {
   render() {
     const { selectedState, greaterThenAge, includedRegion, mapState } = this.state;
     const filteredData = data;
+    console.log(filteredData);
     // .filter((user) => includedRegion.indexOf(user.Region) !== -1)
     // .filter((user) => user.fips > greaterThenAge);
     return (
-      <div style={{ height: "920px", overflowY: "hidden" }}>
-    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide' }}>Opioid Overdose Deaths in the United States </h1>
+      <div style={{ height: "920px", overflowY: "hidden", backgroundColor: "#E2E8E4" }}>
+    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide'}}>Opioid-Related Deaths in the United States </h1>
 
-        <Layout style={{ height: "100%", transform: 'scale(0.60)', marginTop: -210 }}>
+    <Layout style={{ height: "100%", transform: "scale(0.60)", marginTop: -210 }}>
           <Sider width={300} style={{ backgroundColor: "#eee" }}>
             <Content style={{ height: 200, width: 300 }}>
-              <View1 user={selectedState} data={mapState} />
+              <View1 selectedState={selectedState} />
             </Content>
             <Content style={{ height: 300 }}>
-              <View2 user={selectedState} data={filteredData} />
+              <View2 user={filteredData} selectedState={selectedState} />
             </Content>
             <Content style={{ height: 400 }}>
               <View3
@@ -81,30 +79,14 @@ export default class Dashboard extends Component {
           </Sider>
           <Layout style={{ width: 100 }}>
             <Content style={{ height: 300 }}>
-              <View4 user={selectedState} />
+              <View4 user={filteredData} selectedState={selectedState} />
             </Content>
-            <Layout style={{ height: 600 }}>
+            <Layout style={{ height: 600}}>
               <Content style={{ overflow: "hidden" }}>
-                <View5 
-                user={selectedState}
-                state={data.State}
-                data={filteredData}
-                changeMapState={this.changeMapState}
-                changeSelectState={this.changeSelectState}
-                highlightedState={this.state.highlightedState}
-  
-      
-             
-                />
-                
+                <USMap selectedState={selectedState} onStateChange={this.onStateChange} />
               </Content>
-              <Sider width={300} style={{ backgroundColor: "#eee" }}>
-                <View6
-                  state={data.State}
-                  data={filteredData}
-                  changeSelectState={this.changeSelectState}
-                  highlightedState={this.state.highlightedState} // pass highlightedUser as prop
-                />
+              <Sider width={5} style={{ backgroundColor: "#eee" }}>
+                <View6 />
               </Sider>
             </Layout>
           </Layout>

@@ -7,6 +7,7 @@
 
 .tooltip {
   background-color: white;
+  fill: #7E909A
 }
 
 
@@ -40,8 +41,8 @@ p {
   stroke-width: 0.5;
 }
 .selected {
-  fill: #EA6A47;
-  stroke: yellow;
+  fill: #FFCCBB;
+  stroke: whitesmoke;
   stroke-width: 3.5px;
 }
 

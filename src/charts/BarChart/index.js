@@ -13,7 +13,7 @@ function BarChart(props) {
   
   return (
     <div className="vis-barchart">
-    <USMap onStateClick={handleStateClick} {...props} changeSelectState={props.changeSelectState} data={selectedState} />
+    {/* <USMap onStateClick={handleStateClick} {...props} changeSelectState={props.changeSelectState} data={selectedState} /> */}
 
     </div>
   );

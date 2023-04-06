@@ -27,7 +27,7 @@ export default class View6 extends Component {
       //   <div className="header">Choose a state (click to change):</div>
       //   <List size="small" bordered dataSource={data} className="list-container" renderItem={(data) => (
       //       <List.Item
-      //         key={data.key}
+      //         
       //         onClick={() => {
       //           this.handleClick(data);
       //         }}

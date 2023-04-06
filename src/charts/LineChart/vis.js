@@ -72,6 +72,7 @@ const draw = (props) => {
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .attr("stroke-width", 1.5)
+    .attr("font-size", "100px")
     .style("text-anchor", "middle")
     .text("Reported Deaths");
 
@@ -80,7 +81,7 @@ const draw = (props) => {
     .append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "#EA6A47")
+    .attr("stroke", "#6EB5C0")
     .attr("stroke-width", 1.5)
     .attr(
       "d",
@@ -106,9 +107,9 @@ const draw = (props) => {
       return y(d.count);
     })
     .attr("r", 5)
-    .attr("fill", "#EA6A47")
+    .attr("fill", "#6EB5C0")
     .on("mouseover", function (d, i, data) {
-      d3.select(this).attr("r", 6);
+      d3.select(this).attr("r", 8);
       // Define tooltip
       let tooltip = d3
         .select(".vis-linechart")
@@ -135,7 +136,7 @@ const draw = (props) => {
     })
 
     .on("mouseout", function (d) {
-      d3.select(this).attr("r", 6);
+      d3.select(this).attr("r", 5);
       // Hide tooltip
       d3.select(".tooltip").style("opacity", 0).remove();
     });

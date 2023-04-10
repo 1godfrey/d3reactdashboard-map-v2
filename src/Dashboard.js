@@ -55,7 +55,6 @@ export default class Dashboard extends Component {
   render() {
     const { selectedState, greaterThenAge, includedRegion, mapState } = this.state;
     const filteredData = data;
-    console.log(filteredData);
     // .filter((user) => includedRegion.indexOf(user.Region) !== -1)
     // .filter((user) => user.fips > greaterThenAge);
     return (
@@ -72,7 +71,7 @@ export default class Dashboard extends Component {
             </Content>
             <Content style={{ height: 400 }}>
               <View3
-                changeGreaterThenAge={this.changeGreaterThenAge}
+                user={filteredData}
                 changeIncludedRegion={this.changeIncludedRegion}
               />
             </Content>

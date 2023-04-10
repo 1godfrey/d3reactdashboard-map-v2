@@ -12,10 +12,10 @@
 .info-view {
   font-family: "Audiowide";
   position: absolute;
-  margin-left: 65px;
+  margin-left: 60px;
   margin-top: 45px;
   font-size: 40px;
   color: #6EB5C0;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
 }

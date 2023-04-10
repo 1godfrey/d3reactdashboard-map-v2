@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Slider, Checkbox, Divider } from "antd";
 import "./view3.css";
 
+/* eslint-disable react/prop-types */
+
 const CheckboxGroup = Checkbox.Group;
 
 const plainOptions = ["West", "Southwest", "Southeast", "Midwest", "Northeast"]; //, "Southeast", "Northeast"
@@ -15,8 +17,8 @@ export default class View3 extends Component {
       indeterminate: true,
       checkAll: false
     };
+    // console.log(this.props.user[0].Region);
   }
-
   onChangeCheckbox = (checkedList) => {
     this.setState({
       checkedList,
@@ -24,8 +26,25 @@ export default class View3 extends Component {
         !!checkedList.length && checkedList.length < plainOptions.length,
       checkAll: checkedList.length === plainOptions.length
     });
+
+    const stateMap = this.props.user
     // this.props.changeIncludedRegion(checkedList);
+    const newMapState = {...stateMap}; // create a copy of the stateMap
+    console.log(newMapState[1]);
+
+    
+    if (newMapState[0].Region === "West") {
+      for (let i = 0; i < newMapState.length; i++) {
+        if (newMapState[i].Region === "West") {
+          newMapState[i].fill = "red";
+        }
+      }
+    }
+    
+
+    this.setState({ stateMap: newMapState });
   };
+
 
   onCheckAllChange = (e) => {
     const checkedList = e.target.checked ? plainOptions : [];
@@ -41,35 +60,22 @@ export default class View3 extends Component {
     // this.props.changeGreaterThenAge(value);
   };
 
+
   render() {
     return (
       <div id="view3" className="pane">
-        <div className="header">Region Filter</div>
-        <h3 style={{ fontSize: "20px", paddingLeft: "7px" }}>Region</h3>
-        <div style={{ width: 275, marginLeft: 10, alignItems: "baseline" }}>
-          <Checkbox
-            style={{ fontSize: "16px" }}
-            indeterminate={this.state.indeterminate}
-            onChange={this.onCheckAllChange}
-            checked={this.state.checkAll}
-          >
-            Check all
-          </Checkbox>
-        </div>
-        <br />
-        <div style={{ width: 275, margin: 5, display: "flex", alignItems: "center", fontSize: "36px"  }}>
-  <CheckboxGroup
-    options={plainOptions}
-    value={this.state.checkedList}
-    onChange={this.onChangeCheckbox}
-    style={{ display: "flex", flexDirection: "column", alignItems: "baseline"}}
-    className="checkbox-group"
-  />
-</div>
-        <Divider />
-        {/* <h3>Age</h3>
-        <Slider defaultValue={0} onChange={this.onChangeSilder} /> */}
-      </div>
+         <div className="header">Stats</div>
+        <h3 style={{ fontSize: "12px", paddingLeft: "7px", paddingTop: "2px", height: "64px" }}>Widget 1</h3>
+
+        <Divider style={{ borderWidth: "12px" }}  /> 
+         <h3 style={{ fontSize: "12px", paddingLeft: "7px", paddingTop: "-10px", height: "64px" }}>Widget 2</h3>
+
+         <Divider style={{ borderWidth: "12px" }} /> 
+
+         <h3 style={{ fontSize: "12px", paddingLeft: "7px", paddingTop: "-10px", height: "64px" }}>Widget 3</h3>
+
+          <Divider style={{ borderWidth: "12px" }} />
+     </div>
     );
   }
 }

@@ -9,12 +9,14 @@ import { List } from "antd";
 
 const USMap = ({ selectedState, onStateChange }) => {
   const [svgNode, setSvgNode] = useState(10);
+  const [clickedState, setClickedState] = useState(null);
 
   const handleClick = (d) => {
     const state = d.srcElement.__data__.properties.name;
     if (state !== selectedState) {
       onStateChange(state);
     }
+    setClickedState(state);
   };
   
   useEffect(() => {
@@ -126,7 +128,7 @@ const USMap = ({ selectedState, onStateChange }) => {
        
      const legend = svg
   .append("g")
-  .attr("transform", "translate(420, 0)")
+  .attr("transform", "translate(650, 40)")
   .append("svg")
   .attr("class", "legend")
   .attr("width", legendWidth)
@@ -143,7 +145,7 @@ const USMap = ({ selectedState, onStateChange }) => {
        
         legend
           .append("g")
-          .attr("transform", "translate(0," + legendHeight / 2 + ")")
+          .attr("transform", "translate(420," + legendHeight / 2 + ")")
           .call(legendAxis);
        
         legend
@@ -180,7 +182,7 @@ const scaleHeight = 20;
 
 const scale = svg
   .append("g")
-  .attr("transform", "translate(420, 15)");
+  .attr("transform", "translate(650, 55)");
 
 
 const scaleScale = d3
@@ -201,7 +203,8 @@ scale
 scale
   .append("text")
   .attr("x", scaleWidth / 2)
-  .attr("y", 39)
+  .attr("y", 43)
+  .attr("font-size", "16px")
   .attr("text-anchor", "middle")
   .text("Deaths");
 
@@ -228,9 +231,10 @@ scale
           .attr("d", path).style("cursor", "pointer")
           .attr("fill", (d) => colorScale(stateIndexMatcher[d.properties.postal])).on("mouseover", function(d, i, data) {
             d3.select(this).classed("selected", true)
+              .raise()
               .transition()
-              .duration(200)
-              .attr("transform", "scale(1.02)")
+              .duration(2000)
+              .attr("transform", "translate(-0, 0) scale(1.1)")
               .attr("fill", "#FFCCBB")
               .attr("stroke-width", "20px");
               
@@ -248,6 +252,7 @@ scale
           })
           .on("mouseout", function(d, i) {
             d3.select(this).classed("selected", false)
+              .lower()
               .transition()
               .duration(200)
               .attr("transform", "scale(1)")
@@ -276,19 +281,24 @@ scale
           })
           .style("font-family", "Audiowide");
    
+          
      // Select all state paths
      const statePaths = d3.select(svgNode).selectAll(".state");
+
+     
    
        // Add a click event listener to each state path
      statePaths.on("click", function(d) {
        handleClick(d);
      });
+
          })
          .catch(function (error) {
-           console.log(error);
+         
          });
      }, [svgNode]);
    
+     
        return (
         <div className="vis-barchart">
         <div id="map">

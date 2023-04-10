@@ -63,7 +63,7 @@ const draw = (props) => {
     .data(pie(dataset))
     .enter()
     .append("path")
-    .attr("d", arc)
+    .attr("d", arc).style("cursor", "pointer")
     .attr("fill", function (d, i) {
   
       return color(d.data.label);
@@ -71,9 +71,9 @@ const draw = (props) => {
     .attr("stroke-width", 8)
     .on("mouseover", function (d, i, data) {
       console.log(i.data.label);
-      d3.select(this).attr("fill", "#006C84").transition()
-      .duration(200)
-      .attr("transform", "scale(1.2)");
+      d3.select(this).attr("fill", "red").transition()
+      .duration(400)
+      .attr("transform", "scale(1.1)");
       svg
         .append("text")
         .attr("class", "tooltip")

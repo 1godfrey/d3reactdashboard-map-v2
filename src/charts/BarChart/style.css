@@ -46,6 +46,11 @@ p {
   stroke-width: 3.5px;
 }
 
+.selected2 {
+  fill: red;
+}
+
+
 .state-label {
   fill: "white";
   font-size: 1.0em;

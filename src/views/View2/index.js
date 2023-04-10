@@ -3,6 +3,7 @@ import "./view2.css";
 import PieChart from "../../charts/PieChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
+import haha from "../../data/haha.csv";
 
 /* eslint-disable react/prop-types */
 
@@ -30,12 +31,14 @@ export default class View2 extends Component {
         <div className="header">2020 Gender Demographics</div>
         <PieChart data={user[i]} width={width} height={height} />
         <div className={"avatar-view2"}>
-          <a
-            href="https://gist.githubusercontent.com/1godfrey/9aa3bffd17bcc74fb316215bd90425cb/raw/feaddda2fd8175b1aa8daf7c9c197a166b9def34/2020genderdemographicsopioiddeathsbystate"
-            download={true}
-          >
-            <AiOutlineCloudDownload size={30}/>
-          </a>
+        <a
+  href="https://gist.githubusercontent.com/1godfrey/9aa3bffd17bcc74fb316215bd90425cb/raw/feaddda2fd8175b1aa8daf7c9c197a166b9def34/2020genderdemographicsopioiddeathsbystate"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <AiOutlineCloudDownload size={30}/>
+</a>
+
         </div>
       </div>
     );

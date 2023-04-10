@@ -35,10 +35,12 @@ const draw = (props) => {
       })
     )
     .range([0, width]);
-  svg
-    .append("g")
+    svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .style("font-size", "16px");
+
 
   // Add Y axis
   var y = d3
@@ -50,7 +52,11 @@ const draw = (props) => {
       })
     ])
     .range([height, 0]);
-  svg.append("g").call(d3.axisLeft(y));
+    svg.append("g")
+    .call(d3.axisLeft(y))
+    .selectAll("text")
+    .style("font-size", "14px");
+
 
   // Add x axis label
   svg
@@ -60,6 +66,8 @@ const draw = (props) => {
       "transform",
       "translate(" + width / 2 + " ," + (height + margin.top + 20) + ")"
     )
+    .attr("y", 10)
+    .attr("font-size", 40)
     .style("text-anchor", "middle")
     .text("Year");
 
@@ -68,11 +76,11 @@ const draw = (props) => {
     .append("text")
     .attr("class", "axis-label")
     .attr("transform", "rotate(-90)")
-    .attr("y", 10 - margin.left)
+    .attr("y", (0 - margin.left)-5)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .attr("stroke-width", 1.5)
-    .attr("font-size", "100px")
+    .attr("font-size", 100)
     .style("text-anchor", "middle")
     .text("Reported Deaths");
 
@@ -106,10 +114,12 @@ const draw = (props) => {
     .attr("cy", function (d) {
       return y(d.count);
     })
-    .attr("r", 5)
+    .attr("r", 8)
+    .style("cursor", "pointer")
     .attr("fill", "#6EB5C0")
     .on("mouseover", function (d, i, data) {
-      d3.select(this).attr("r", 8);
+      d3.select(this).transition()
+      .duration(150).attr("r", 14).attr("fill", "red");
       // Define tooltip
       let tooltip = d3
         .select(".vis-linechart")
@@ -136,7 +146,8 @@ const draw = (props) => {
     })
 
     .on("mouseout", function (d) {
-      d3.select(this).attr("r", 5);
+      d3.select(this).transition()
+      .duration(150).attr("r", 8).attr("fill", "#6EB5C0");
       // Hide tooltip
       d3.select(".tooltip").style("opacity", 0).remove();
     });

@@ -1,3 +1,3 @@
 ## React-D3-Dashboard
 
-This is a template project to build a dashboard with React + D3.
+This is a React Dashboard that uses D3.js to render its graphs. All the graphs are interactive and the whole dashboard can be controlled from the Map by clicking a state to see information on that specific state. Under the hood, React Hooks (useEffect, useState, useCallback specifically) are used to manage/update these changes in data visualizations in real time. Because everything is rendered with SVG it will always display in lossless quality. This dashboard is also "living" in the sense that a user could update/simply drag and drop a new data set into the dashboard and all the graphs will be updated in real time.

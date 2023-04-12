@@ -52,6 +52,11 @@ export default class Dashboard extends Component {
     });
   };
 
+  calculateDecadeTotal = (data) => {
+    return data.reduce((total, current) => total + current.count, 0);
+  }
+  
+
   render() {
     const { selectedState, greaterThenAge, includedRegion, mapState } = this.state;
     const filteredData = data;
@@ -59,7 +64,7 @@ export default class Dashboard extends Component {
     // .filter((user) => user.fips > greaterThenAge);
     return (
       <div style={{ height: "920px", overflowY: "hidden", backgroundColor: "#E2E8E4" }}>
-    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide'}}>Opioid-Related Deaths in the United States </h1>
+    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide', color: 'gray', fontSize: "29px"}}>Opioid-Related Deaths in the United States, CDC </h1>
 
     <Layout style={{ height: "100%", transform: "scale(0.60)", marginTop: -210 }}>
           <Sider width={300} style={{ backgroundColor: "#eee" }}>
@@ -72,7 +77,8 @@ export default class Dashboard extends Component {
             <Content style={{ height: 400 }}>
               <View3
                 user={filteredData}
-                changeIncludedRegion={this.changeIncludedRegion}
+                selectedState={selectedState}
+      
               />
             </Content>
           </Sider>

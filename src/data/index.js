@@ -1,10 +1,14 @@
+function calculateDecadeTotal(data) {
+  return data.reduce((total, current) => total + current.count, 0);
+}
+
 const data = [
   {
     State: "Alaska",
     postal: "AK",
     Region: "West",
     fips: 2,
-    StateDecadeTotal: 7503,
+    Average_Population: 737000,
     Gender_Demo: [117, 27, 16],
     opioidDeaths: [
       { date: "2014-1-1", count: 124 },
@@ -21,7 +25,7 @@ const data = [
     postal: "DE",
     Region: "Northeast",
     fips: 10,
-    StateDecadeTotal: 7503,
+    Average_Population: 936000,
     Gender_Demo: [352, 64, 28],
     opioidDeaths: [
       { date: "2014-1-1", count: 189 },
@@ -38,7 +42,7 @@ const data = [
     postal: "DC",
     Region: "Southeast",
     fips: 11,
-    StateDecadeTotal: 7503,
+    Average_Population: 659000,
     Gender_Demo: [79, 26, 9],
     opioidDeaths: [
       { date: "2014-1-1", count: 124 },
@@ -55,8 +59,8 @@ const data = [
     postal: "IL",
     Region: "Midwest",
     fips: 17,
-    StateDecadeTotal: 7503,
-    Gender_Demo: [2342, 765, 441],
+    Average_Population: 12881000,
+    Gender_Demo: [2342, 765, 441],    
     opioidDeaths: [
       { date: "2014-1-1", count: 1705 },
       { date: "2015-1-1", count: 1835 },
@@ -65,14 +69,18 @@ const data = [
       { date: "2018-1-1", count: 2722 },
       { date: "2019-1-1", count: 2790 },
       { date: "2020-1-1", count: 3549 }
-    ]
+    ],
+    // Decade_Total : opioidDeaths.reduce((total, current) => total + current.count, 0),
+    // Average_Population,
+    // Trend: (opioidDeaths[6].count - opioidDeaths[0].count) / opioidDeaths[0].count
+
   },
   {
     State: "North Dakota",
     postal: "ND",
     Region: "Midwest",
     fips: 38,
-    StateDecadeTotal: 7503,
+    Average_Population: 739000,
     Gender_Demo: [79, 26, 9],
     opioidDeaths: [
       { date: "2014-1-1", count: 43 },
@@ -89,7 +97,7 @@ const data = [
     postal: "WY",
     Region: "West",
     fips: 56,
-    StateDecadeTotal: 7503,
+    Average_Population: 584000,
     Gender_Demo: [66, 28, 5],
     opioidDeaths: [
       { date: "2014-1-1", count: 109 },
@@ -106,7 +114,7 @@ const data = [
     postal: "SC",
     Region: "Southeast",
     fips: 45,
-    StateDecadeTotal: 7503,
+    Average_Population: 4832000,
     Gender_Demo: [1523, 160, 56],
     opioidDeaths: [
       { date: "2014-1-1", count: 701 },
@@ -123,7 +131,7 @@ const data = [
     postal: "CT",
     Region: "Northeast",
     fips: 9,
-    StateDecadeTotal: 7503,
+    Average_Population: 3597000,
     Gender_Demo: [820, 324, 227],
     opioidDeaths: [
       { date: "2014-1-1", count: 623 },
@@ -140,7 +148,7 @@ const data = [
     postal: "RI",
     Region: "Northeast",
     fips: 44,
-    StateDecadeTotal: 7503,
+    Average_Population: 1055000,
     Gender_Demo: [274, 94, 29],
     opioidDeaths: [
       { date: "2014-1-1", count: 247 },
@@ -157,7 +165,7 @@ const data = [
     postal: "VT",
     Region: "Northeast",
     fips: 50,
-    StateDecadeTotal: 7503,
+    Average_Population: 627000,
     Gender_Demo: [130, 47, 13],
     opioidDeaths: [
       { date: "2014-1-1", count: 83 },
@@ -174,7 +182,7 @@ const data = [
     postal: "CO",
     Region: "West",
     fips: 8,
-    StateDecadeTotal: 7503,
+    Average_Population: 5356000,
     Gender_Demo: [950, 402, 40],
     opioidDeaths: [
       { date: "2014-1-1", count: 899 },
@@ -191,7 +199,7 @@ const data = [
     postal: "NV",
     Region: "West",
     fips: 32,
-    StateDecadeTotal: 7503,
+    Average_Population: 2839000,
     Gender_Demo: [520, 221, 91],
     opioidDeaths: [
       { date: "2014-1-1", count: 545 },
@@ -208,7 +216,7 @@ const data = [
     postal: "NH",
     Region: "Northeast",
     fips: 33,
-    StateDecadeTotal: 7503,
+    Average_Population: 1327000,
     Gender_Demo: [240, 113, 40],
     opioidDeaths: [
       { date: "2014-1-1", count: 334 },
@@ -225,7 +233,7 @@ const data = [
     postal: "AZ",
     Region: "SouthWest",
     fips: 4,
-    StateDecadeTotal: 7503,
+    Average_Population: 6731000,
     Gender_Demo: [1540, 826, 184],
     opioidDeaths: [
       { date: "2014-1-1", count: 356 },
@@ -242,7 +250,7 @@ const data = [
     postal: "AL",
     Region: "Southeast",
     fips: 1,
-    StateDecadeTotal: 7503,
+    Average_Population: 4849000,
     Gender_Demo: [690, 295, 44],
     opioidDeaths: [
       { date: "2014-1-1", count: 723 },
@@ -259,7 +267,7 @@ const data = [
     postal: "PA",
     Region: "Northeast",
     fips: 42,
-    StateDecadeTotal: 7503,
+    Average_Population: 12787000,
     Gender_Demo: [3822, 1235, 111],
     opioidDeaths: [
       { date: "2014-1-1", count: 2732 },
@@ -276,10 +284,10 @@ const data = [
     postal: "AR",
     Region: "Southeast",
     fips: 5,
-    StateDecadeTotal: 7503,
+    Average_Population: 2966000,
     Gender_Demo: [330, 145, 71],
     opioidDeaths: [
-      { date: "2014-1-1", count: 1211 },
+      { date: "2014-1-1", count: 378 },
       { date: "2015-1-1", count: 392 },
       { date: "2016-1-1", count: 401 },
       { date: "2017-1-1", count: 446 },
@@ -293,7 +301,7 @@ const data = [
     postal: "CA",
     Region: "West",
     fips: 6,
-    StateDecadeTotal: 7503,
+    Average_Population: 38803000,
     Gender_Demo: [6223, 2251, 434],
     opioidDeaths: [
       { date: "2014-1-1", count: 4521 },
@@ -310,7 +318,7 @@ const data = [
     postal: "FL",
     Region: "Southeast",
     fips: 12,
-    StateDecadeTotal: 7503,
+    Average_Population: 19893000,
     Gender_Demo: [5135, 1874, 222],
     opioidDeaths: [
       { date: "2014-1-1", count: 2634 },
@@ -327,7 +335,7 @@ const data = [
     postal: "NJ",
     Region: "Northeast",
     fips: 34,
-    StateDecadeTotal: 7503,
+    Average_Population: 8938000,
     Gender_Demo: [1933, 742, 165],
     opioidDeaths: [
       { date: "2014-1-1", count: 1253 },
@@ -344,7 +352,7 @@ const data = [
     postal: "KS",
     Region: "Midwest",
     fips: 20,
-    StateDecadeTotal: 7503,
+    Average_Population: 2904000,
     Gender_Demo: [383, 85, 22],
     opioidDeaths: [
       { date: "2014-1-1", count: 332 },
@@ -361,7 +369,7 @@ const data = [
     postal: "GA",
     Region: "Southeast",
     fips: 13,
-    StateDecadeTotal: 7503,
+    Average_Population: 10097000,
     Gender_Demo: [1432, 382, 102],
     opioidDeaths: [
       { date: "2014-1-1", count: 1206 },
@@ -378,7 +386,7 @@ const data = [
     postal: "HI",
     Region: "West",
     fips: 15,
-    StateDecadeTotal: 7503,
+    Average_Population: 1420000,
     Gender_Demo: [199, 53, 22],
     opioidDeaths: [
       { date: "2014-1-1", count: 157 },
@@ -395,7 +403,7 @@ const data = [
     postal: "IA",
     Region: "Midwest",
     fips: 19,
-    StateDecadeTotal: 7503,
+    Average_Population: 3107000,
     Gender_Demo: [300, 98, 34],
     opioidDeaths: [
       { date: "2014-1-1", count: 264 },
@@ -412,7 +420,7 @@ const data = [
     postal: "NM",
     Region: "Southwest",
     fips: 35,
-    StateDecadeTotal: 7503,
+    Average_Population: 2086000,
     Gender_Demo: [534, 193, 57],
     opioidDeaths: [
       { date: "2014-1-1", count: 547 },
@@ -429,7 +437,7 @@ const data = [
     postal: "ID",
     Region: "West",
     fips: 16,
-    StateDecadeTotal: 7503,
+    Average_Population: 1634000,
     Gender_Demo: [205, 63, 19],
     opioidDeaths: [
       { date: "2014-1-1", count: 212 },
@@ -446,7 +454,7 @@ const data = [
     postal: "IN",
     Region: "Midwest",
     fips: 18,
-    StateDecadeTotal: 7503,
+    Average_Population: 6597000,
     Gender_Demo: [1631, 564, 126],
     opioidDeaths: [
       { date: "2014-1-1", count: 1172 },
@@ -463,7 +471,7 @@ const data = [
     postal: "KY",
     Region: "Southeast",
     fips: 21,
-    StateDecadeTotal: 7503,
+    Average_Population: 4413000,
     Gender_Demo: [1832, 196, 55],
     opioidDeaths: [
       { date: "2014-1-1", count: 1077 },
@@ -480,7 +488,7 @@ const data = [
     postal: "MD",
     Region: "Northeast",
     fips: 24,
-    StateDecadeTotal: 7503,
+    Average_Population: 5976000,
     Gender_Demo: [1832, 643, 76],
     opioidDeaths: [
       { date: "2014-1-1", count: 1070 },
@@ -497,7 +505,7 @@ const data = [
     postal: "ME",
     Region: "Northeast",
     fips: 23,
-    StateDecadeTotal: 7503,
+    Average_Population: 1330000,
     Gender_Demo: [353, 125, 18],
     opioidDeaths: [
       { date: "2014-1-1", count: 216 },
@@ -514,7 +522,7 @@ const data = [
     postal: "LA",
     Region: "Southeast",
     fips: 22,
-    StateDecadeTotal: 7503,
+    Average_Population: 4650000,
     Gender_Demo: [1432, 415, 49],
     opioidDeaths: [
       { date: "2014-1-1", count: 777 },
@@ -531,7 +539,7 @@ const data = [
     postal: "MA",
     Region: "Northeast",
     fips: 25,
-    StateDecadeTotal: 7503,
+    Average_Population: 6745000,
     Gender_Demo: [1399, 796, 107],
     opioidDeaths: [
       { date: "2014-1-1", count: 1289 },
@@ -548,7 +556,7 @@ const data = [
     postal: "MN",
     Region: "Midwest",
     fips: 27,
-    StateDecadeTotal: 7503,
+    Average_Population: 5457000,
     Gender_Demo: [823, 197, 30],
     opioidDeaths: [
       { date: "2014-1-1", count: 517 },
@@ -565,7 +573,7 @@ const data = [
     postal: "MO",
     Region: "Midwest",
     fips: 29,
-    StateDecadeTotal: 7503,
+    Average_Population: 6064000,
     Gender_Demo: [1135, 630, 110],
     opioidDeaths: [
       { date: "2014-1-1", count: 1067 },
@@ -582,7 +590,7 @@ const data = [
     postal: "MI",
     Region: "Midwest",
     fips: 26,
-    StateDecadeTotal: 7503,
+    Average_Population: 9910000,
     Gender_Demo: [2034, 684, 41],
     opioidDeaths: [
       { date: "2014-1-1", count: 1762 },
@@ -599,7 +607,7 @@ const data = [
     postal: "MS",
     Region: "Southeast",
     fips: 28,
-    StateDecadeTotal: 7503,
+    Average_Population: 2994000,
     Gender_Demo: [401, 126, 59],
     opioidDeaths: [
       { date: "2014-1-1", count: 336 },
@@ -616,7 +624,7 @@ const data = [
     postal: "UT",
     Region: "West",
     fips: 49,
-    StateDecadeTotal: 7503,
+    Average_Population: 2943000,
     Gender_Demo: [420, 183, 19],
     opioidDeaths: [
       { date: "2014-1-1", count: 603 },
@@ -633,7 +641,7 @@ const data = [
     postal: "NE",
     Region: "Midwest",
     fips: 31,
-    StateDecadeTotal: 7503,
+    Average_Population: 1882000,
     Gender_Demo: [150, 43, 21],
     opioidDeaths: [
       { date: "2014-1-1", count: 125 },
@@ -650,7 +658,7 @@ const data = [
     postal: "MT",
     Region: "West",
     fips: 30,
-    StateDecadeTotal: 7503,
+    Average_Population: 1024000,
     Gender_Demo: [115, 37, 10],
     opioidDeaths: [
       { date: "2014-1-1", count: 125 },
@@ -667,7 +675,7 @@ const data = [
     postal: "OK",
     Region: "Southwest",
     fips: 40,
-    StateDecadeTotal: 7503,
+    Average_Population: 3878000,
     Gender_Demo: [601, 131, 30],
     opioidDeaths: [
       { date: "2014-1-1", count: 777 },
@@ -684,7 +692,7 @@ const data = [
     postal: "NC",
     Region: "Southeast",
     fips: 37,
-    StateDecadeTotal: 7503,
+    Average_Population: 9944000,
     Gender_Demo: [2345, 693, 108],
     opioidDeaths: [
       { date: "2014-1-1", count: 1358 },
@@ -701,13 +709,14 @@ const data = [
     postal: "OR",
     Region: "West",
     fips: 41,
-    StateDecadeTotal: 7503,
+    Average_Population: 3970000,
     Gender_Demo: [603, 183, 17],
     opioidDeaths: [
       { date: "2014-1-1", count: 522 },
       { date: "2015-1-1", count: 505 },
       { date: "2016-1-1", count: 506 },
       { date: "2017-1-1", count: 530 },
+      { date: "2018-1-1", count: 580 },
       { date: "2019-1-1", count: 615 },
       { date: "2020-1-1", count: 803 }
     ]
@@ -717,7 +726,7 @@ const data = [
     postal: "NY",
     Region: "Northeast",
     fips: 36,
-    StateDecadeTotal: 7503,
+    Average_Population: 19746000,
     Gender_Demo: [3754, 1085, 126],
     opioidDeaths: [
       { date: "2014-1-1", count: 2300 },
@@ -734,7 +743,7 @@ const data = [
     postal: "OH",
     Region: "Midwest",
     fips: 39,
-    StateDecadeTotal: 7503,
+    Average_Population: 11594000,
     Gender_Demo: [3935, 1035, 234],
     opioidDeaths: [
       { date: "2014-1-1", count: 2744 },
@@ -751,7 +760,7 @@ const data = [
     postal: "SD",
     Region: "Midwest",
     fips: 46,
-    StateDecadeTotal: 7503,
+    Average_Population: 853000,
     Gender_Demo: [64, 13, 6],
     opioidDeaths: [
       { date: "2014-1-1", count: 63 },
@@ -768,7 +777,7 @@ const data = [
     postal: "TN",
     Region: "Southeast",
     fips: 47,
-    StateDecadeTotal: 7503,
+    Average_Population: 6549000,
     Gender_Demo: [2143, 793, 98],
     opioidDeaths: [
       { date: "2014-1-1", count: 1269 },
@@ -785,7 +794,7 @@ const data = [
     postal: "TX",
     Region: "Southwest",
     fips: 48,
-    StateDecadeTotal: 7503,
+    Average_Population: 26957000 ,
     Gender_Demo: [3015, 1026, 131],
     opioidDeaths: [
       { date: "2014-1-1", count: 2601 },
@@ -802,7 +811,7 @@ const data = [
     postal: "VA",
     Region: "Southeast",
     fips: 51,
-    StateDecadeTotal: 7503,
+    Average_Population: 8326000,
     Gender_Demo: [1564, 584, 92],
     opioidDeaths: [
       { date: "2014-1-1", count: 980 },
@@ -819,7 +828,7 @@ const data = [
     postal: "WV",
     Region: "Southeast",
     fips: 54,
-    StateDecadeTotal: 7503,
+    Average_Population: 1850000,
     Gender_Demo: [853, 385, 92],
     opioidDeaths: [
       { date: "2014-1-1", count: 627 },
@@ -836,7 +845,7 @@ const data = [
     postal: "WA",
     Region: "West",
     fips: 53,
-    StateDecadeTotal: 7503,
+    Average_Population: 7062000,
     Gender_Demo: [1353, 320, 60],
     opioidDeaths: [
       { date: "2014-1-1", count: 979 },
@@ -853,7 +862,7 @@ const data = [
     postal: "WI",
     Region: "Midwest",
     fips: 53,
-    StateDecadeTotal: 7503,
+    Average_Population: 5758000,
     Gender_Demo: [1232, 215, 84],
     opioidDeaths: [
       { date: "2014-1-1", count: 979 },
@@ -867,4 +876,4 @@ const data = [
   }
 ];
 
-export default data;
+export default data; calculateDecadeTotal;

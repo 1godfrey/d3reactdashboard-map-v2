@@ -3,6 +3,7 @@ import "./view4.css";
 import LineChart from "../../charts/LineChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
+import { BsDatabaseAdd } from "react-icons/bs";
 
 /* eslint-disable react/prop-types */
 
@@ -37,7 +38,7 @@ export default class View4 extends Component {
             rel="noopener noreferrer"
             download="haha.csv"
           >
-            <AiOutlineCloudDownload
+            <BsDatabaseAdd
               size={30}
               className="download-icon"
               style={{ position: "absolute", transform: "translate(190%, -190%)" }}

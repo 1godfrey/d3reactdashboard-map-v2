@@ -3,6 +3,7 @@ import "./view2.css";
 import PieChart from "../../charts/PieChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
+import { BsDatabaseAdd } from "react-icons/bs";
 import haha from "../../data/haha.csv";
 
 /* eslint-disable react/prop-types */
@@ -36,7 +37,7 @@ export default class View2 extends Component {
   target="_blank"
   rel="noopener noreferrer"
 >
-  <AiOutlineCloudDownload size={30}/>
+  <BsDatabaseAdd size={30}/>
 </a>
 
         </div>

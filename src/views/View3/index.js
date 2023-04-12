@@ -1,78 +1,71 @@
 import React, { Component } from "react";
 import { Slider, Checkbox, Divider } from "antd";
 import "./view3.css";
+import { AiOutlinePercentage } from "react-icons/ai";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 /* eslint-disable react/prop-types */
 
-const CheckboxGroup = Checkbox.Group;
-
-const plainOptions = ["West", "Southwest", "Southeast", "Midwest", "Northeast"]; //, "Southeast", "Northeast"
-const defaultCheckedList = ["West", "Southwest", "Southeast", "Midwest", "Northeast"];
-
 export default class View3 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checkedList: defaultCheckedList,
-      indeterminate: true,
-      checkAll: false
-    };
-    // console.log(this.props.user[0].Region);
+
+  calculateDecadeTotal = (data) => {
+    return data.reduce((total, current) => total + current.count, 0);
   }
-  onChangeCheckbox = (checkedList) => {
-    this.setState({
-      checkedList,
-      indeterminate:
-        !!checkedList.length && checkedList.length < plainOptions.length,
-      checkAll: checkedList.length === plainOptions.length
-    });
-
-    const stateMap = this.props.user
-    // this.props.changeIncludedRegion(checkedList);
-    const newMapState = {...stateMap}; // create a copy of the stateMap
-    console.log(newMapState[1]);
-
-    
-    if (newMapState[0].Region === "West") {
-      for (let i = 0; i < newMapState.length; i++) {
-        if (newMapState[i].Region === "West") {
-          newMapState[i].fill = "red";
-        }
-      }
-    }
-    
-
-    this.setState({ stateMap: newMapState });
-  };
-
-
-  onCheckAllChange = (e) => {
-    const checkedList = e.target.checked ? plainOptions : [];
-    this.setState({
-      checkedList: checkedList,
-      indeterminate: false,
-      checkAll: e.target.checked
-    });
-    // this.props.changeIncludedRegion(checkedList);
-  };
-
-  onChangeSilder = (value) => {
-    // this.props.changeGreaterThenAge(value);
-  };
-
+  
 
   render() {
+    const { selectedState, user } = this.props;
+    let Trend = 0;
+    let Decade_Total = 0;
+    let Average_Population = 0;
+   
+
+    for (let i = 0; i < user.length; i++) {
+      if (user[i].State === selectedState) {
+        // console.log(user[i].Average_Population);
+        // console.log(user[i].opioidDeaths[0].count);
+        // console.log(user[i].Decade_Total);
+        // console.log(user[i].Average_Population);
+        // console.log(user[i].Trend);
+        Trend = (user[i].opioidDeaths[6].count - user[i].opioidDeaths[0].count) / user[i].opioidDeaths[0].count.toFixed(2);
+        Decade_Total = user[i].opioidDeaths[0].count + user[i].opioidDeaths[1].count + user[i].opioidDeaths[2].count + user[i].opioidDeaths[3].count + user[i].opioidDeaths[4].count + user[i].opioidDeaths[5].count + user[i].opioidDeaths[6].count;
+        Average_Population = user[i].Average_Population;
+      }
+
+    }
+
+
+
+    // const Decade_Total = calculateDecadeTotal(opioidDeaths);
+
     return (
       <div id="view3" className="pane">
          <div className="header">Stats</div>
-        <h3 style={{ fontSize: "12px", paddingLeft: "7px", paddingTop: "2px", height: "64px" }}>Widget 1</h3>
+        <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "2px", height: "64px", color: "#FFCCBB" }}>
+          Decade Total <BsFillPeopleFill style={{ fontSize:"40px", position: 'absolute', top: 615, left: 25}} />
+          <div style={{fontSize: "54px", color: "black", marginLeft: "50px", marginTop: "7px", display: "flex", justifyContent: "center", gap: "10px" }}>
+            {Decade_Total} <div style={{fontSize: "22px", color: "grey"}}>Deaths</div>
+            </div>
+            </h3>
 
         <Divider style={{ borderWidth: "12px" }}  /> 
-         <h3 style={{ fontSize: "12px", paddingLeft: "7px", paddingTop: "-10px", height: "64px" }}>Widget 2</h3>
+         <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "-10px", height: "64px", color: "#6EB5C0" }}>
+          Average Population <BsFillPeopleFill style={{ fontSize:"40px", position: 'absolute', top: 745, left: 25}} />
+          <div style={{fontSize: "54px", color: "black", marginLeft: "15px", marginTop: "7px", display: "flex", justifyContent: "center", gap: "10px" }}>
+            {(Average_Population/1000000).toFixed(2)} <div style={{fontSize: "22px", color: "grey"}}>M</div>
+            </div>
+            </h3>
 
          <Divider style={{ borderWidth: "12px" }} /> 
 
-         <h3 style={{ fontSize: "12px", paddingLeft: "7px", paddingTop: "-10px", height: "64px" }}>Widget 3</h3>
+         <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "-10px", height: "64px", color: "green" }}>
+  % Trend {(Trend.toFixed(2)*100) < 0 ? <IoIosArrowDown style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20, color: "red"}} /> : <IoIosArrowUp style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20}} />}
+  <div style={{fontSize: "54px", color: "black", marginLeft: "15px", marginTop: "7px", display: "flex", justifyContent: "center", gap: "10px" }}>
+    {Trend.toFixed(2)*100}
+    <AiOutlinePercentage style={{fontSize: "22px", color: "grey"}}/>
+  </div>
+</h3>
 
           <Divider style={{ borderWidth: "12px" }} />
      </div>

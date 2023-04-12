@@ -197,14 +197,14 @@ const scaleAxis = d3.axisBottom(scaleScale).ticks(5);
 scale
   .append("g")
   .attr("transform", "translate(0," + scaleHeight / 2 + ")")
-  .call(scaleAxis);
+  .call(scaleAxis).style("font-size", "16px");
 
 
 scale
   .append("text")
   .attr("x", scaleWidth / 2)
-  .attr("y", 43)
-  .attr("font-size", "16px")
+  .attr("y", 57)
+  .attr("font-size", "24px")
   .attr("text-anchor", "middle")
   .text("Deaths");
 
@@ -234,7 +234,7 @@ scale
               .raise()
               .transition()
               .duration(2000)
-              .attr("transform", "translate(-0, 0) scale(1.1)")
+              .attr("transform", "translate(-0, 0) scale(1.05)")
               .attr("fill", "#FFCCBB")
               .attr("stroke-width", "20px");
               

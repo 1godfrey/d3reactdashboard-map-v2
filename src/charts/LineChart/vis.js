@@ -119,7 +119,7 @@ const draw = (props) => {
     .attr("fill", "#6EB5C0")
     .on("mouseover", function (d, i, data) {
       d3.select(this).transition()
-      .duration(150).attr("r", 14).attr("fill", "red");
+      .duration(150).attr("r", 14).attr("fill", "#FFCCBB");
       // Define tooltip
       let tooltip = d3
         .select(".vis-linechart")

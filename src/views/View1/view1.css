@@ -15,7 +15,7 @@
   margin-left: 60px;
   margin-top: 45px;
   font-size: 40px;
-  color: #6EB5C0;
+  color: black;   /* #6EB5C0 was original color*/
   font-weight: bold;
   text-align: center;
 }

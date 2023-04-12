@@ -47,7 +47,7 @@ const draw = (props) => {
   let color = d3
     .scaleOrdinal()
     .domain(Gender)
-    .range(["#FFCCBB", "#E2E8E4", "#6EB5C0"]);
+    .range(["#FFCCBB", "#6EB5C0", "#E2E8E4"]);
 
   let arc = d3.arc().innerRadius(0).outerRadius(radius);
 
@@ -71,7 +71,7 @@ const draw = (props) => {
     .attr("stroke-width", 8)
     .on("mouseover", function (d, i, data) {
       console.log(i.data.label);
-      d3.select(this).attr("fill", "red").transition()
+      d3.select(this).attr("fill", "lightblue").transition()
       .duration(400)
       .attr("transform", "scale(1.1)");
       svg
@@ -80,9 +80,9 @@ const draw = (props) => {
         .attr("text-anchor", "middle")
         .text(i.data.label + ": " + i.data.count + " Deaths")
         .attr("x", 0)
-        .attr("y", -10)
+        .attr("y", 60)
         .attr("font-weight", "bold")
-        .attr("font-size", "20px")
+        .attr("font-size", "25px")
         .style("fill", "black");
     })
     .on("mouseout", function (d, i, data) {

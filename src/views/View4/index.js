@@ -4,8 +4,10 @@ import LineChart from "../../charts/LineChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { BsDatabaseAdd } from "react-icons/bs";
+import haha2 from "./haha2.csv";
 
 /* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-no-target-blank */
 
 export default class View4 extends Component {
   render() {
@@ -32,16 +34,11 @@ export default class View4 extends Component {
           <LineChart data={user[indexHold]} width={width} height={height} />
         </div>
         <div className={"avatar-view3"}>
-          <a
-            href="https://gist.githubusercontent.com/1godfrey/cc1a979c2a1820ab1a66b6224c4a69cd/raw/0b0cc6cf3dbc40409da679f04d8608bd5179169a/CDC-opioiddeathsbystate"
-            target="_blank"
-            rel="noopener noreferrer"
-            download="haha.csv"
-          >
+        <a href={haha2} download="CDC-opioiddeathsbystate.csv" target="_blank">
             <BsDatabaseAdd
               size={30}
               className="download-icon"
-              style={{ position: "absolute", transform: "translate(190%, -190%)" }}
+              style={{ position: "absolute", transform: "translate(150%, -190%)" }}
             />
           </a>
         </div>

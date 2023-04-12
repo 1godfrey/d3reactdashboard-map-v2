@@ -4,9 +4,12 @@ import PieChart from "../../charts/PieChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { BsDatabaseAdd } from "react-icons/bs";
-import haha from "../../data/haha.csv";
+import haha from "./haha.csv";
+
 
 /* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-no-target-blank */
+
 
 export default class View2 extends Component {
   render() {
@@ -27,18 +30,19 @@ export default class View2 extends Component {
     // console.log(user.Gender_Demo);
     const width = 260;
     const height = 260;
+    
     return (
       <div id="view2" className="pane">
         <div className="header">2020 Gender Demographics</div>
         <PieChart data={user[i]} width={width} height={height} />
         <div className={"avatar-view2"}>
-        <a
-  href="https://gist.githubusercontent.com/1godfrey/9aa3bffd17bcc74fb316215bd90425cb/raw/feaddda2fd8175b1aa8daf7c9c197a166b9def34/2020genderdemographicsopioiddeathsbystate"
-  target="_blank"
-  rel="noopener noreferrer"
->
+        <a href={haha} download="2020_Gender_Demographics_Opioid_Deaths_By_State.csv" target="_blank">
   <BsDatabaseAdd size={30}/>
 </a>
+
+
+
+  
 
         </div>
       </div>

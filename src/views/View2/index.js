@@ -4,7 +4,7 @@ import PieChart from "../../charts/PieChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { BsDatabaseAdd } from "react-icons/bs";
-import haha from "./haha.csv";
+import Gender_Demographics_Opioid_Deaths_By_State_in_2020 from "./Gender_Demographics_Opioid_Deaths_By_State_in_2020.csv";
 
 
 /* eslint-disable react/prop-types */
@@ -36,7 +36,7 @@ export default class View2 extends Component {
         <div className="header">2020 Gender Demographics</div>
         <PieChart data={user[i]} width={width} height={height} />
         <div className={"avatar-view2"}>
-        <a href={haha} download="2020_Gender_Demographics_Opioid_Deaths_By_State.csv" target="_blank">
+        <a href={Gender_Demographics_Opioid_Deaths_By_State_in_2020} download="Gender_Demographics_Opioid_Deaths_By_State_in_2020.csv" target="_blank">
   <BsDatabaseAdd size={30}/>
 </a>
 

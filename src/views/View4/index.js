@@ -4,7 +4,7 @@ import LineChart from "../../charts/LineChart";
 import { Avatar } from "antd";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { BsDatabaseAdd } from "react-icons/bs";
-import haha2 from "./haha2.csv";
+import CDC_opioid_deaths_by_state from "./CDC_opioid_deaths_by_state.csv";
 
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-target-blank */
@@ -34,7 +34,7 @@ export default class View4 extends Component {
           <LineChart data={user[indexHold]} width={width} height={height} />
         </div>
         <div className={"avatar-view3"}>
-        <a href={haha2} download="CDC-opioiddeathsbystate.csv" target="_blank">
+        <a href={CDC_opioid_deaths_by_state} download="CDC_opioid_deaths_by_state.csv" target="_blank">
             <BsDatabaseAdd
               size={30}
               className="download-icon"

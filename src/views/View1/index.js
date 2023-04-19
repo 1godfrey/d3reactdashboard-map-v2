@@ -7,7 +7,8 @@ import "./view1.css";
 
 export default class View1 extends Component {
   render() {
-    const { selectedState } = this.props;
+    
+    const { selectedState, user } = this.props;
 
 
 

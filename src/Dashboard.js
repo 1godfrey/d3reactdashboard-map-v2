@@ -70,9 +70,9 @@ export default class Dashboard extends Component {
     <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide', color: 'gray', fontSize: "29px", marginBottom: "35px"}}>Opioid-Related Deaths in the United States, CDC </h1>
 
     <Layout style={{ height: "100%", transform: "scale(0.60)", marginTop: -210 }}>
-          <Sider width={300} style={{ backgroundColor: "black" }}>
+          <Sider width={300} style={{ backgroundColor: "#000000" }}>
             <Content style={{ height: 200, width: 300 }}>
-              <View1 selectedState={selectedState} />
+              <View1 selectedState={selectedState} user={filteredData} />
             </Content>
             <Content style={{ height: 300 }}>
               <View2 user={filteredData} selectedState={selectedState} />
@@ -89,21 +89,18 @@ export default class Dashboard extends Component {
             <Content style={{ height: 300 }}>
               <View4 user={filteredData} selectedState={selectedState} />
             </Content>
-            <Layout style={{ height: 600}}>
-              <Content style={{  backgroundColor: "#150050" }}>
-                <USMap selectedState={selectedState} onStateChange={this.onStateChange}/>
+            <Layout style={{ height: 560}}>
+              <Content style={{  backgroundColor: "#150050", marginTop: -20 }}>
+                <div style={{marginTop:-20}}>
+                <USMap selectedState={selectedState} onStateChange={this.onStateChange}/></div>
               </Content>
               <Sider width={5} style={{ backgroundColor: "#150050" }}>
-                <View6 />
+                {/* <View6 /> */}
               </Sider>
             </Layout>
           </Layout>
         </Layout>
-        <Layout>
-          <Footer style={{ height: 20 }}>
-            <div style={{ marginTop: -10 }}></div>
-          </Footer>
-        </Layout>
+
       </div>
     );
   }

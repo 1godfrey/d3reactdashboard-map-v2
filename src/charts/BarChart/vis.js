@@ -30,7 +30,7 @@ const USMap = ({ selectedState, onStateChange }) => {
     if (!svgNode) return;
 
     const margin = { top: -0, left: 0, right: 0, bottom: 0 },
-      height =1025 - margin.top - margin.bottom,
+      height =625 - margin.top - margin.bottom,
       width = 1100 - margin.left - margin.right;
 
     let svg = d3.select(svgNode);
@@ -135,7 +135,7 @@ const USMap = ({ selectedState, onStateChange }) => {
        
      const legend = svg
   .append("g")
-  .attr("transform", "translate(690, 240)")
+  .attr("transform", "translate(690, 40)")
   .append("svg")
   .attr("class", "legend")
   .attr("width", legendWidth)
@@ -189,7 +189,7 @@ const scaleHeight = 20;
 
 const scale = svg
   .append("g")
-  .attr("transform", "translate(690, 255)").attr('stroke', 'white');
+  .attr("transform", "translate(690, 55)").attr('stroke', 'white');
 
 
 const scaleScale = d3
@@ -321,12 +321,12 @@ scale
      
        return (
         <div className="vis-barchart">
-               <div style={{ overflowX: "scroll", scrollbarWidth: "thin", scrollbarColor: "white", transform: "translate(0%, -26%)"}}>
-
+   
+<div style={{transform: "translate(0%, 1%)",overflowX: "scroll"}}>
         <div id="map"></div>
-          <svg ref={(node) => setSvgNode(node)} height="800" width="1200"></svg>
-
-        </div>
+          <svg ref={(node) => setSvgNode(node)} height="600" width="1200"></svg>
+</div>
+               
       </div>
        );
      }

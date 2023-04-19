@@ -47,7 +47,7 @@ const draw = (props) => {
   let color = d3
     .scaleOrdinal()
     .domain(Gender)
-    .range(["#FFCCBB", "#6EB5C0", "#E2E8E4"]);
+    .range(["#FB2576", "#350071", "#E2E8E4"]);
 
   let arc = d3.arc().innerRadius(0).outerRadius(radius);
 
@@ -83,7 +83,7 @@ const draw = (props) => {
         .attr("y", 60)
         .attr("font-weight", "bold")
         .attr("font-size", "25px")
-        .style("fill", "black");
+        .style("fill", "white");
     })
     .on("mouseout", function (d, i, data) {
       d3.select(this).attr("fill", color(i.data.label)).transition()

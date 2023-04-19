@@ -30,18 +30,19 @@ export default class View4 extends Component {
         <div className="header">
           Reported Deaths vs. Year for each State (hover for details)
         </div>
-        <div style={{ overflowX: "hidden", overflowY: "hidden" }}>
-          <LineChart data={user[indexHold]} width={width} height={height} />
-        </div>
-        <div className={"avatar-view3"}>
+        <div style={{ overflowX: "scroll", scrollbarWidth: "thin", scrollbarColor: "white", transform: "translate(0%, -5%)"}}>
+          <LineChart data={user[indexHold]} width={width} height={height} />  
+                <div className={"avatar-view3"}>
         <a href={CDC_opioid_deaths_by_state} download="CDC_opioid_deaths_by_state.csv" target="_blank">
             <BsDatabaseAdd
               size={30}
               className="download-icon"
-              style={{ position: "absolute", transform: "translate(150%, -190%)" }}
+              style={{ position: "absolute", transform: "translate(650%, -145%)" }}
             />
           </a>
         </div>
+        </div>
+
       </div>
     );
   }

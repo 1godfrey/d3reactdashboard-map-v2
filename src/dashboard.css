@@ -1,5 +1,5 @@
 .pane {
-  background: #E2E8E4;
+  background: #150050;
   font-size: 20px;
   font-weight: 700;
   border-style: solid;
@@ -14,13 +14,13 @@
 }
 
 .header {
-  background-color: #E2E8E4;
+  background-color: #000000;
   margin: 5px;
   padding-left: 10px;
   padding-top: 4px;
   border-radius: 5px;
   height: 32px;
-  color: gray;
+  color: white;
 }
 
 .selected {

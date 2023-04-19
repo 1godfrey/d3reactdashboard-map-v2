@@ -1,5 +1,5 @@
 svg .axis-label {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: bold;
   font-stretch: extra-expanded
 }
@@ -13,4 +13,8 @@ svg .axis-label {
 .tooltip-background {
   fill: #7E909A;
   opacity: 0.8;
+}
+
+.chart-svg {
+  fill: white;
 }

@@ -61,13 +61,16 @@ export default class Dashboard extends Component {
     const { selectedState, greaterThenAge, includedRegion, mapState } = this.state;
     const filteredData = data;
     // .filter((user) => includedRegion.indexOf(user.Region) !== -1)
+  
     // .filter((user) => user.fips > greaterThenAge);
+
+    // OG background color: #E2E8E4
     return (
-      <div style={{ height: "920px", overflowY: "hidden", backgroundColor: "#E2E8E4" }}>
-    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide', color: 'gray', fontSize: "29px"}}>Opioid-Related Deaths in the United States, CDC </h1>
+      <div style={{ height: "920px", overflowY: "hidden", backgroundColor: "#000000" }}>
+    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide', color: 'gray', fontSize: "29px", marginBottom: "35px"}}>Opioid-Related Deaths in the United States, CDC </h1>
 
     <Layout style={{ height: "100%", transform: "scale(0.60)", marginTop: -210 }}>
-          <Sider width={300} style={{ backgroundColor: "#eee" }}>
+          <Sider width={300} style={{ backgroundColor: "black" }}>
             <Content style={{ height: 200, width: 300 }}>
               <View1 selectedState={selectedState} />
             </Content>
@@ -87,10 +90,10 @@ export default class Dashboard extends Component {
               <View4 user={filteredData} selectedState={selectedState} />
             </Content>
             <Layout style={{ height: 600}}>
-              <Content style={{ overflow: "hidden" }}>
-                <USMap selectedState={selectedState} onStateChange={this.onStateChange} />
+              <Content style={{  backgroundColor: "#150050" }}>
+                <USMap selectedState={selectedState} onStateChange={this.onStateChange}/>
               </Content>
-              <Sider width={5} style={{ backgroundColor: "#eee" }}>
+              <Sider width={5} style={{ backgroundColor: "#150050" }}>
                 <View6 />
               </Sider>
             </Layout>

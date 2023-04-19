@@ -34,10 +34,12 @@ export default class View2 extends Component {
     return (
       <div id="view2" className="pane">
         <div className="header">2020 Gender Demographics</div>
+      
         <PieChart data={user[i]} width={width} height={height} />
         <div className={"avatar-view2"}>
         <a href={Gender_Demographics_Opioid_Deaths_By_State_in_2020} download="Gender_Demographics_Opioid_Deaths_By_State_in_2020.csv" target="_blank">
-  <BsDatabaseAdd size={30}/>
+  <BsDatabaseAdd size={30} style={{ position: "relative", transform: "translate(30%, 15%)"}}
+  />
 </a>
 
 

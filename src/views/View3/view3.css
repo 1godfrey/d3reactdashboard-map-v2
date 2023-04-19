@@ -1,11 +1,11 @@
 #view3 {
   height: 400px;
-  background-color:#fffffff7; /* #ced2cc was original background color*/
+  background-color:#150050; /* #ced2cc was original background color*/
 }
 
 #view3 > h3 {
   margin-left: 5px;
-  color: gray;
+  color: white;
   opacity: 0.7;
 
 }

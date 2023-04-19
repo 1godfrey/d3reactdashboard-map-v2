@@ -10,8 +10,16 @@ function BarChart(props) {
     setSelectedState(state);
     props.changeSelectState(state);
   };
+
+  function zoom(scale) {
+    svg.transition()
+      .duration(750)
+      .call(zoomBehaviors.transform, initialTransform.scale(scale));
+  }
+  
   
   return (
+    
     <div className="vis-barchart">
     {/* <USMap onStateClick={handleStateClick} {...props} changeSelectState={props.changeSelectState} data={selectedState} /> */}
 

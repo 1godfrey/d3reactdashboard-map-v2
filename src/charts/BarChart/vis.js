@@ -18,13 +18,20 @@ const USMap = ({ selectedState, onStateChange }) => {
     }
     setClickedState(state);
   };
+
+  function zoom(scale) {
+    svg.transition()
+      .duration(750)
+      .call(zoomBehaviors.transform, initialTransform.scale(scale));
+  }
+  
   
   useEffect(() => {
     if (!svgNode) return;
 
-    const margin = { top: 0, left: 0, right: 0, bottom: 0 },
-      height = 560 - margin.top - margin.bottom,
-      width = 1000 - margin.left - margin.right;
+    const margin = { top: -0, left: 0, right: 0, bottom: 0 },
+      height =1025 - margin.top - margin.bottom,
+      width = 1100 - margin.left - margin.right;
 
     let svg = d3.select(svgNode);
 
@@ -40,7 +47,7 @@ const USMap = ({ selectedState, onStateChange }) => {
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     }
     // geoAlbersUsa for US, geoMercator for World Map
-    const projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1200);
+    const projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1250);
       
     const path = d3.geoPath().projection(projection);
 
@@ -128,7 +135,7 @@ const USMap = ({ selectedState, onStateChange }) => {
        
      const legend = svg
   .append("g")
-  .attr("transform", "translate(650, 40)")
+  .attr("transform", "translate(690, 240)")
   .append("svg")
   .attr("class", "legend")
   .attr("width", legendWidth)
@@ -145,7 +152,7 @@ const USMap = ({ selectedState, onStateChange }) => {
        
         legend
           .append("g")
-          .attr("transform", "translate(420," + legendHeight / 2 + ")")
+          .attr("transform", "translate(460," + legendHeight / 2 + ")")
           .call(legendAxis);
        
         legend
@@ -182,7 +189,7 @@ const scaleHeight = 20;
 
 const scale = svg
   .append("g")
-  .attr("transform", "translate(650, 55)");
+  .attr("transform", "translate(690, 255)").attr('stroke', 'white');
 
 
 const scaleScale = d3
@@ -197,7 +204,8 @@ const scaleAxis = d3.axisBottom(scaleScale).ticks(5);
 scale
   .append("g")
   .attr("transform", "translate(0," + scaleHeight / 2 + ")")
-  .call(scaleAxis).style("font-size", "16px");
+  .call(scaleAxis).style("font-size", "16px").selectAll("line")
+  .attr("stroke", "white");
 
 
 scale
@@ -206,6 +214,7 @@ scale
   .attr("y", 57)
   .attr("font-size", "24px")
   .attr("text-anchor", "middle")
+  .attr('fill', 'white')
   .text("Deaths");
 
 
@@ -219,49 +228,60 @@ scale
   .attr("fill", "none")
   .attr("stroke", "none");
 
+  var initialTransform = d3.zoomIdentity.translate(0, 0).scale(1);
+
+  
+
 
        
 
-          svg
-          .selectAll(".state")
-          .data(states)
-          .enter()
-          .append("path")
-          .attr("class", "state")
-          .attr("d", path).style("cursor", "pointer")
-          .attr("fill", (d) => colorScale(stateIndexMatcher[d.properties.postal])).on("mouseover", function(d, i, data) {
-            d3.select(this).classed("selected", true)
-              .raise()
-              .transition()
-              .duration(2000)
-              .attr("transform", "translate(-0, 0) scale(1.05)")
-              .attr("fill", "#FFCCBB")
-              .attr("stroke-width", "20px");
-              
-              tooltip
-              .style("opacity", 1)
-              .style("background-color", "#7E909A") // set background color to light blue
-              .style("color", "#DCEFFB") // set text color to gray
-              .html(
-                i.properties.name + " reported " + stateIndexMatcher[i.properties.postal] + " deaths in 2020")
-              .style("left", d.pageX + "px")
-              .style("top", d.pageY - 28 + "px"); 
+  svg.selectAll(".state")
+  .data(states)
+  .enter()
+  .append("path")
+  .attr("class", "state")
+  .attr("d", path)
+  .style("cursor", "pointer")
+  .attr("fill", (d) => colorScale(stateIndexMatcher[d.properties.postal]))
+  .on("mouseover", function(d, i) {
+    d3.select(this).classed("selected", true)
+      .raise()
+      .transition()
+      .duration(500)
+      .attrTween("transform", function() {
+        var x = 0;
+        var y = 3;
+        var translateInterpolateX = d3.interpolate(x, 0);
+        var translateInterpolateY = d3.interpolate(y, -5);
+        return function(t) {
+          var translateX = translateInterpolateX(d3.easeBounceOut(t));
+          var translateY = translateInterpolateY(d3.easeBounceOut(t));
+          var scale = 1 + 0.05 * d3.easeBounceOut(t);
+          return "translate(" + translateX + "," + translateY + ")"    
+        }
+      })
+      .attr("fill", "#FB2576")
+      .attr("stroke-width", "20px");
+      
+    tooltip.style("opacity", 1)
+           .style("background-color", "#7E909A")
+           .style("color", "#DCEFFB")
+           .html(i.properties.name + " reported " + stateIndexMatcher[i.properties.postal] + " deaths in 2020")
+           .style("left", d.pageX + "px")
+           .style("top", d.pageY - 28 + "px");
+  })
+  .on("mouseout", function(d, i) {
+    d3.select(this).classed("selected", false)
+      .lower()
+      .transition()
+      .duration(200)
+      .attr("transform", "scale(1)")
+      .attr("fill", (d) => colorScale(stateIndexMatcher[d.properties.postal]))
+      .attr("stroke-width", "1px");
+      
+    tooltip.style("opacity", 0);
+  });
 
-
-
-          })
-          .on("mouseout", function(d, i) {
-            d3.select(this).classed("selected", false)
-              .lower()
-              .transition()
-              .duration(200)
-              .attr("transform", "scale(1)")
-              .attr("fill", (d) => colorScale(stateIndexMatcher[d.properties.postal]))
-              .attr("stroke-width", "1px");
-
-              tooltip.style("opacity", 0);
-
-          });
         
           var tooltip = d3.select("body").append("div").attr("class", "tooltip");
 
@@ -301,16 +321,11 @@ scale
      
        return (
         <div className="vis-barchart">
-        <div id="map">
+               <div style={{ overflowX: "scroll", scrollbarWidth: "thin", scrollbarColor: "white", transform: "translate(0%, -26%)"}}>
+
+        <div id="map"></div>
           <svg ref={(node) => setSvgNode(node)} height="800" width="1200"></svg>
-          <div>
-            <br />
-            <br />
-          </div>
-          <div>
-            <br />
-          </div>
-          {/* <div>Current state: {selectedState}</div> */}
+
         </div>
       </div>
        );

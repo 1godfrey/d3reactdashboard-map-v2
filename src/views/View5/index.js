@@ -40,6 +40,7 @@ export default class View5 extends Component {
         <div className="header">
           Reported Deaths vs State (hover for details)
         </div>
+        
         <div className="bar-chart">
           {/* <USMap
             // data={selectedState}

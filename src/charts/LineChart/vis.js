@@ -10,8 +10,8 @@ const draw = (props) => {
     data = _.cloneDeep(props.data.opioidDeaths);
   }
   d3.select(".vis-linechart > *").remove();
-  let margin = { top: 20, right: 30, bottom: 50, left: 65 }; // Adjusted margins
-  const width = 940 - margin.left - margin.right;
+  let margin = { top: 20, right: 30, bottom: 50, left: 80 }; // Adjusted margins
+  const width = 1100 - margin.left - margin.right;
   const height = props.height - margin.top - margin.bottom;
   let svg = d3
     .select(".vis-linechart")
@@ -19,7 +19,7 @@ const draw = (props) => {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")").classed("chart-svg", true);
 
   data.forEach(function (d) {
     d.date = d3.timeParse("%Y-%m-%d")(d.date);
@@ -39,6 +39,7 @@ const draw = (props) => {
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
     .selectAll("text")
+    .style("fill", "white")
     .style("font-size", "16px");
 
 
@@ -55,6 +56,7 @@ const draw = (props) => {
     svg.append("g")
     .call(d3.axisLeft(y))
     .selectAll("text")
+    .style("fill", "white")
     .style("font-size", "14px");
 
 
@@ -69,6 +71,7 @@ const draw = (props) => {
     .attr("y", 10)
     .attr("font-size", 40)
     .style("text-anchor", "middle")
+    .style("fill", "white")
     .text("Year");
 
   // Add y axis label
@@ -77,10 +80,10 @@ const draw = (props) => {
     .attr("class", "axis-label")
     .attr("transform", "rotate(-90)")
     .attr("y", (0 - margin.left)-5)
-    .attr("x", 0 - height / 2)
+    .attr("x", -18 - height / 2)
     .attr("dy", "1em")
     .attr("stroke-width", 1.5)
-    .attr("font-size", 100)
+    .style("fill", "white")
     .style("text-anchor", "middle")
     .text("Reported Deaths");
 
@@ -89,7 +92,7 @@ const draw = (props) => {
     .append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "#6EB5C0")
+    .attr("stroke", "white")
     .attr("stroke-width", 1.5)
     .attr(
       "d",
@@ -116,7 +119,7 @@ const draw = (props) => {
     })
     .attr("r", 8)
     .style("cursor", "pointer")
-    .attr("fill", "#6EB5C0")
+    .attr("fill", "#FB2576")
     .on("mouseover", function (d, i, data) {
       d3.select(this).transition()
       .duration(150).attr("r", 14).attr("fill", "#FFCCBB");
@@ -147,7 +150,7 @@ const draw = (props) => {
 
     .on("mouseout", function (d) {
       d3.select(this).transition()
-      .duration(150).attr("r", 8).attr("fill", "#6EB5C0");
+      .duration(150).attr("r", 8).attr("fill", "#FB2576");
       // Hide tooltip
       d3.select(".tooltip").style("opacity", 0).remove();
     });

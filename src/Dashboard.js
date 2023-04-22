@@ -17,7 +17,7 @@ export default class Dashboard extends Component {
     super(props);
 
     this.state = {
-      selectedState: "Alaska",
+      selectedState: "Pick a State",   //  was "Alaska"
       greaterThenAge: 0,
       includedRegion: ["Male", "Female", "Unknown"],
       highlightedState: null // new state property

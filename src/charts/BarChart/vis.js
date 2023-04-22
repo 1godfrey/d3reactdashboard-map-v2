@@ -285,7 +285,6 @@ scale
         
           var tooltip = d3.select("body").append("div").attr("class", "tooltip");
 
-
           svg.selectAll(".state-label")
           .data(states)
           .enter()
@@ -299,8 +298,10 @@ scale
           .text(function(d) {
              return d.properties.postal;
           })
-          .style("font-family", "Audiowide");
-   
+          .style("font-family", "Audiowide")
+          .attr("font-weight", "bold")
+          .raise();
+        
           
      // Select all state paths
      const statePaths = d3.select(svgNode).selectAll(".state");

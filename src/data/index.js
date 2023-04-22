@@ -263,7 +263,7 @@ const data = [
     ]
   },
   {
-    State: "Pennslyvania",
+    State: "Pennsylvania",
     postal: "PA",
     Region: "Northeast",
     fips: 42,
@@ -872,6 +872,23 @@ const data = [
       { date: "2018-1-1", count: 1164 },
       { date: "2019-1-1", count: 1259 },
       { date: "2020-1-1", count: 1733 }
+    ]
+  },
+  {
+    State: "Pick a State",
+    postal: "ST",
+    Region: "Midwest",
+    fips: 53,
+    Average_Population: 0,
+    Gender_Demo: [1, 1, 1],
+    opioidDeaths: [
+      { date: "2014-1-1", count: 0 },
+      { date: "2015-1-1", count: 0 },
+      { date: "2016-1-1", count: 0 },
+      { date: "2017-1-1", count: 0 },
+      { date: "2018-1-1", count: 0 },
+      { date: "2019-1-1", count: 0 },
+      { date: "2020-1-1", count: 0 }
     ]
   }
 ];

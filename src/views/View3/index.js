@@ -45,7 +45,7 @@ export default class View3 extends Component {
         <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "2px", height: "64px", color: "#FFCCBB" }}>
           Decade Total <BsFillPeopleFill style={{ fontSize:"40px", position: 'absolute', top: 615, left: 25}} />
           <div style={{fontSize: "54px", color: "white", marginLeft: "-18px", marginTop: "7px", display: "flex", justifyContent: "center", gap: "10px" }}>
-            {Decade_Total} <div style={{fontSize: "22px", color: "white", position: "absolute", marginLeft: "190px"}}>Deaths</div>
+            {Decade_Total} <div style={{fontSize: "22px", color: "white", position: "absolute", marginLeft: "210px"}}>Deaths</div>
             </div>
             </h3>
 
@@ -62,7 +62,7 @@ export default class View3 extends Component {
          <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "-10px", height: "64px", color: "green" }}>
   % Trend {(Trend.toFixed(2)*100) < 0 ? <IoIosArrowDown style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20, color: "red"}} /> : <IoIosArrowUp style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20}} />}
   <div style={{fontSize: "54px", color: "white", marginLeft: "15px", marginTop: "7px", display: "flex", justifyContent: "center", gap: "10px" }}>
-    {Trend.toFixed(2)*100}
+    {((Trend.toFixed(2)*100)).toFixed(0)}
     <AiOutlinePercentage style={{fontSize: "22px", color: "white"}}/>
   </div>
 </h3>

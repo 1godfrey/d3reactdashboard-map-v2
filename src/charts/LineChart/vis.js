@@ -10,13 +10,13 @@ const draw = (props) => {
     data = _.cloneDeep(props.data.opioidDeaths);
   }
   d3.select(".vis-linechart > *").remove();
-  let margin = { top: 20, right: 30, bottom: 50, left: 80 }; // Adjusted margins
+  let margin = { top: 20, right: 50, bottom: 50, left: 80 }; // Adjusted margins
   const width = 1100 - margin.left - margin.right;
   const height = props.height - margin.top - margin.bottom;
   let svg = d3
     .select(".vis-linechart")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", 1100)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")").classed("chart-svg", true);
@@ -34,7 +34,7 @@ const draw = (props) => {
         return d.date;
       })
     )
-    .range([0, width]);
+    .range([0, (width*0.95)]);
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
@@ -52,9 +52,9 @@ const draw = (props) => {
         return +d.count;
       })
     ])
-    .range([height, 0]);
+    .range([height, 10]);
     svg.append("g")
-    .call(d3.axisLeft(y))
+    .call(d3.axisLeft(y).ticks(5))
     .selectAll("text")
     .style("fill", "white")
     .style("font-size", "14px");

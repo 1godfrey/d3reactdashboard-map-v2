@@ -66,10 +66,10 @@ export default class Dashboard extends Component {
 
     // OG background color: #E2E8E4
     return (
-      <div style={{ height: "920px", overflowY: "hidden", backgroundColor: "#000000" }}>
-    <h1 style={{ textAlign: 'center', fontFamily: 'Audiowide', color: 'gray', fontSize: "29px", marginBottom: "35px"}}>Opioid-Related Deaths in the United States, CDC </h1>
+      <div style={{  height: "820px", overflowY: "hidden", backgroundColor: "#000000" }}>
+    <h1 style={{ fontFamily: 'Audiowide', color: 'white', fontSize: "29px", marginBottom: "35px", marginLeft: "300px"}}>Opioid-Related Deaths in the United States, CDC </h1>
 
-    <Layout style={{ height: "100%", transform: "scale(0.60)", marginTop: -210 }}>
+    <Layout style={{ height: "920px", transform: "scale(0.60)", marginTop: -210, width: "1400px" }}>
           <Sider width={300} style={{ backgroundColor: "#000000" }}>
             <Content style={{ height: 200, width: 300 }}>
               <View1 selectedState={selectedState} user={filteredData} />
@@ -85,14 +85,20 @@ export default class Dashboard extends Component {
               />
             </Content>
           </Sider>
-          <Layout style={{ width: 100 }}>
+
+          
+          <Layout style={{ width: 100, backgroundColor: "#150050" }}>
             <Content style={{ height: 300 }}>
+            <div className="view4">
               <View4 user={filteredData} selectedState={selectedState} />
+              </div>
             </Content>
-            <Layout style={{ height: 560}}>
+            <Layout style={{ height: 560 }}>
               <Content style={{  backgroundColor: "#150050", marginTop: -20 }}>
-                <div style={{marginTop:-20}}>
+               <div className="us-map">
+                 <div style={{marginTop:-20}}>
                 <USMap selectedState={selectedState} onStateChange={this.onStateChange}/></div>
+              </div>
               </Content>
               <Sider width={5} style={{ backgroundColor: "#150050" }}>
                 {/* <View6 /> */}

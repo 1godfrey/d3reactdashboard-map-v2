@@ -13,7 +13,7 @@ export default class LineChart extends Component {
 
     render() {
         return (
-            <div className='vis-linechart'/>
+            <div className='vis-linechart' width={1100}/>
         )
     }
 }

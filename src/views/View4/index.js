@@ -25,19 +25,21 @@ export default class View4 extends Component {
     const width = 2000;
     const height = 250;
 
+    // /* overflowX: "scroll" */
+
     return (
       <div id="view4" className="pane">
         <div className="header">
           Reported Deaths vs. Year for each State (hover for details)
         </div>
-        <div style={{ overflowX: "scroll", scrollbarWidth: "thin", scrollbarColor: "white", transform: "translate(0%, -5%)"}}>
+        <div style={{ scrollbarWidth: "thin", scrollbarColor: "white", transform: "translate(0%, -5%)"}}> 
           <LineChart data={user[indexHold]} width={width} height={height} />  
                 <div className={"avatar-view3"}>
         <a href={CDC_opioid_deaths_by_state} download="CDC_opioid_deaths_by_state.csv" target="_blank">
             <BsDatabaseAdd
-              size={30}
+              size={35}
               className="download-icon"
-              style={{ position: "absolute", transform: "translate(650%, -145%)" }}
+              style={{ position: "absolute", transform: "translate(580%, -175%)" }}
             />
           </a>
         </div>

@@ -18,3 +18,7 @@ svg .axis-label {
 .chart-svg {
   fill: white;
 }
+
+.vis-linechart {
+  width: 110px
+}

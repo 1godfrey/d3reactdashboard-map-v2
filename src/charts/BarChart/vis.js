@@ -323,9 +323,9 @@ scale
        return (
         <div className="vis-barchart">
    
-<div style={{transform: "translate(0%, 1%)",overflowX: "scroll"}}>
+<div style={{transform: "translate(0%, 2%)",}}>
         <div id="map"></div>
-          <svg ref={(node) => setSvgNode(node)} height="600" width="1200"></svg>
+          <svg ref={(node) => setSvgNode(node)} height="600" width="1100"></svg>
 </div>
                
       </div>

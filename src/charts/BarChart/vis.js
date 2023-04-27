@@ -260,8 +260,7 @@ scale
           return "translate(" + translateX + "," + translateY + ")"    
         }
       })
-      .attr("fill", "#FB2576")
-      .attr("stroke-width", "20px");
+      .attr("stroke-width", "30px");
       
     tooltip.style("opacity", 1)
            .style("background-color", "#7E909A")
@@ -276,6 +275,7 @@ scale
       .transition()
       .duration(200)
       .attr("transform", "scale(1)")
+      .style("opacity", 1)
       .attr("fill", (d) => colorScale(stateIndexMatcher[d.properties.postal]))
       .attr("stroke-width", "1px");
       
@@ -298,7 +298,8 @@ scale
           .text(function(d) {
              return d.properties.postal;
           })
-          .style("font-family", "Audiowide")
+          .style("font-size", "18px")
+          .style("font-family", "Helvetica Neue")
           .attr("font-weight", "bold")
           .raise();
         

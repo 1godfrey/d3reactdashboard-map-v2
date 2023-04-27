@@ -59,8 +59,8 @@ export default class View3 extends Component {
 
          <Divider style={{ borderWidth: "12px" }} /> 
 
-         <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "-10px", height: "64px", color: "green" }}>
-  % Trend {(Trend.toFixed(2)*100) < 0 ? <IoIosArrowDown style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20, color: "red"}} /> : <IoIosArrowUp style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20}} />}
+         <h3 style={{ fontSize: "18px", paddingLeft: "7px", paddingTop: "-10px", height: "64px", color: "red" }}>
+  Percent Trend {(Trend.toFixed(2)*100) < 0 ? <IoIosArrowDown style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20, color: "lightgreen"}} /> : <IoIosArrowUp style={{ fontSize:"50px", position: 'absolute', top: 855, left: 20}} />}
   <div style={{fontSize: "54px", color: "white", marginLeft: "15px", marginTop: "7px", display: "flex", justifyContent: "center", gap: "10px" }}>
     {((Trend.toFixed(2)*100)).toFixed(0)}
     <AiOutlinePercentage style={{fontSize: "22px", color: "white"}}/>
